@@ -6,12 +6,15 @@
  */
 int main(void)
 {
-	char alp[26] = "abcdefghijklmnopqrstuvwxyz";
-	int i;
+	char low, e, q;
 
-	for (i = 0; i < 26; i++)
+	e = 'e';
+	q = 'q';
+
+	for (low = 'a'; low <= 'z'; low++)
 	{
-		putchar(alp[i]);
+	if (low != e && low != q)
+	putchar(low);
 	}
 	putchar('\n');
 	return (0);
