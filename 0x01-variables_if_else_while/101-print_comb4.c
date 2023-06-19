@@ -14,11 +14,15 @@ int main(void)
 		{
 			for (o = n + 1; o <= '9'; o++)
 			{
-				if (m != n && n != o)
+				if ((m != n) != o)
 				{
 					putchar(m);
 					putchar(n);
 					putchar(o);
+					if (m == '7' && n == '8')
+					{
+						continue;
+					}
 					putchar(',');
 					putchar(' ');
 				}
