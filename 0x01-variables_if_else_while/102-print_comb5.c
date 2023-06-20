@@ -14,11 +14,11 @@ int main(void)
 		{
 			putchar((m / 10) + '0');
 			putchar((m % 10) + '0');
+			putchar(',');
 			putchar(' ');
 			putchar((n / 10) + '0');
 			putchar((n % 10) + '0');
-
-			if (m == 98 && n == 99)
+			if (m <= 98 && n <= 99)
 			{
 				continue;
 				putchar(',');
