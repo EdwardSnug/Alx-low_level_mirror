@@ -3,6 +3,7 @@
   *_strncat - A function that concatenates two strings using
   * 'n' bytes from src.
   *
+  *@n: Number of bytes to concatenate to dest
   *@src: First string to concatenate containing n or more bytes
   *@dest: Second string to concatenate and end with a terminating null byte
   *
