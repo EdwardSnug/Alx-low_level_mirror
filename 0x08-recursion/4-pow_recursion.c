@@ -20,12 +20,14 @@ int _pow_recursion(int x, int y)
 	else if (y % 2 == 0)
 	{
 		int pow;
+
 		pow = _pow_recursion(x, y / 2);
 		return (pow * pow);
 	}
 	else
 	{
 		int pow;
+
 		pow = _pow_recursion(x, y / 2);
 		return (x * pow * pow);
 	}
