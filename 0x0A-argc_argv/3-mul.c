@@ -3,7 +3,7 @@
 /**
   *_atoi - Function that converts a string to an integer
   *
-  *@s String variable for conversion
+  *@s: String variable for conversion
   *
   *Return: Returns integer converted values or 0
   */
