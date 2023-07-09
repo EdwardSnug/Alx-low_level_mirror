@@ -49,7 +49,6 @@ int _atoi(char *s)
   */
 int main(int argc, char *argv[])
 {
-	int i;
 	int product, num1, num2;
 
 	if (argc == 1 || argc > 3)
@@ -57,17 +56,11 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	num1 = _atoi(argv[1]);
-	num2 = _atoi(argv[2]);
-	if (argc > 1 && argc <= 3)
+	else
 	{
-		i = 0;
-		product = 1;
-		while (i <= argc)
-		{
-			product = num1 * num2;
-			i++;
-		}
+		num1 = _atoi(argv[1]);
+		num2 = _atoi(argv[2]);
+		product = num1 * num2;
 	}
 	printf("%d\n", product);
 	return (0);
