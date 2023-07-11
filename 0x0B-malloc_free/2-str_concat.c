@@ -33,17 +33,17 @@ char *str_concat(char *s1, char *s2)
 	}
 	n = 0;
 	i = 0;
-	while (i < len)
+	m = 0;
+	while (s1[m] != '\0')
 	{
-		if (i <= m)
-		{
-			str[i] = s1[m];
-		}
-		else if (i >= m)
-		{
-			str[i] = s2[n];
-			n++;
-		}
+		str[i] = s1[m];
+		m++;
+		i++;
+	}
+	while (s2[n] != '\0')
+	{
+		str[i] = s2[n];
+		n++;
 		i++;
 	}
 	str[i] = '\0';
