@@ -22,11 +22,6 @@ int (*get_op_func(char *s))(int, int)
 	i = 0;
 	while (ops[i].op != NULL && *(ops[i].op) != *s)
 	{
-		if (s[i] != 43 || s[i] != 45 || s[i] != 47 ||
-		s[i] != 42 || s[i] != 37)
-		{
-			return (NULL);
-		}
 		i++;
 	}
 	return (ops[i].f);
