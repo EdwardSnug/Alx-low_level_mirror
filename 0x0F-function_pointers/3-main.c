@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 	  *'47' - ASCII value for '\'
 	  *'37' - ASCII value for '%'
 	 */
-	if ((*op == 47 && num2 == 0) || (*op == 37 && num2 == 0))
+	if (*op == 47 && num2 == 0 || *op == 37 && num2 == 0)
 	{
 		printf("Error\n");
 		exit(100);
