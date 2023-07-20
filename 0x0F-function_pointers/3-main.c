@@ -1,3 +1,4 @@
+#include "function_pointers.h"
 #include "3-calc.h"
 /**
   *main - Entry for our program
@@ -24,15 +25,6 @@ int main(int argc, char *argv[])
 	{
 		printf("Error\n");
 		exit(99);
-	}
-	/**
-	  *'47' - ASCII value for '\'
-	  *'37' - ASCII value for '%'
-	 */
-	if ((*op == 47 && num2 == 0) || (*op == 37 && num2 == 0))
-	{
-		printf("Error\n");
-		exit(100);
 	}
 	printf("%d\n", get_op_func(op)(num1, num2));
 	return (0);
