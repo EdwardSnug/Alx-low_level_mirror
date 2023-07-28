@@ -4,7 +4,6 @@
   *print_list - A function that prints all the elements of
   *our singly linked list
   *
-  *@list_t: Name of our singly inked list
   *@h: A pointer to our linked list.(Treats our list as its node)
   *
   *Return: returns the number of nodes before null is specified
