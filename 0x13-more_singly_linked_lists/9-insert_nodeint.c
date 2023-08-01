@@ -39,7 +39,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		temp = temp->next;
 	}
 	/**an index out of bounds*/
-	if (i < idx)
+	if (i > idx)
 	{
 		free(new_node);
 		return (NULL);
