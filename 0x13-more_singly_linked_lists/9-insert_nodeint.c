@@ -13,17 +13,14 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	listint_t *new_node, *prev_node, *temp;
 	unsigned int i;
 
-	/**Return null if the linked list is empty*/
-	if (*head == NULL || head == NULL)
+	if (!head)
 		return (NULL);
 	new_node = malloc(sizeof(listint_t));
-	if (new_node)
-	{
-		new_node->n = n;
-		new_node->next = NULL;
-	}
-	else
+	if (!new_node)
 		return (NULL);
+
+	new_node->n = n;
+	new_node->next = NULL;
 	/*new_node is inserted at beginning of list as the new head of the list*/
 	if (idx == 0)
 	{
@@ -39,12 +36,13 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		temp = temp->next;
 	}
 	/**an index out of bounds*/
-	if (i > idx)
+	if (i < idx)
 	{
 		free(new_node);
 		return (NULL);
 	}
 	prev_node->next = new_node;
 	new_node->next = temp;
+
 	return (new_node);
 }
