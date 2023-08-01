@@ -7,3 +7,6 @@
 5. Free - A function that free a list and sets the head to NULL
 6. Pop - A function that removes the first node and returns data contained inside the deleted node
 7. Get node at index - A function that returns the nth node of a list
+8. Sum list -  A function that sums all the data (n) of a singly linked list in all nodes present
+9. Insert - A function that adds a node to a list on a specific position
+10.Delete at index - A function that deletes the node at the given index position in the list. index is initialised from zero
