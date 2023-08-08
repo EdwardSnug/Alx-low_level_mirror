@@ -52,33 +52,25 @@ int main(int argc, char *argv[])
 	}
 	buffer = buffer_memory(argv[2]);
 	source_file = open(argv[1], O_RDONLY);
-	if (source_file == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s/n", argv[1]);
-		exit(98);
-	}
 	bytesread = read(source_file, buffer, 1024);
-	if (bytesread == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
-		exit(98);
-	}
 	dest_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (dest_file == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s/n", argv[2]);
-		free(buffer);
-		close_file(dest_file);
-		exit(99);
-	}
-	byteswritten = write(dest_file, buffer, 1024);
-	if (byteswritten == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		free(buffer);
-		exit(99);
-	}
+	do {
+		if (source_file == -1 || bytesread == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s/n", argv[1]);
+			free(buffer);
+			exit(98);
+		}
+		byteswritten = write(dest_file, buffer, bytesread);
+		if (dest_file == -1 || byteswritten == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s/n", argv[2]);
+			free(buffer);
+			exit(99);
+		}
+		bytesread = read(source_file, buffer, 1024);
+		dest_file = open(argv[2], O_WRONLY | O_APPEND);
+	} while (bytesread > 0);
 	free(buffer);
 	close_file(source_file);
 	close_file(dest_file);
