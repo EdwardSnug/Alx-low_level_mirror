@@ -42,8 +42,7 @@ void close_file(int fd)
   */
 int main(int argc, char *argv[])
 {
-	int source_file, dest_file;
-	ssize_t bytesread, byteswritten;
+	int source_file, dest_file, bytesread, byteswritten;
 	char *buffer;
 
 	if (argc != 3)
@@ -58,6 +57,13 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't write to %s/n", argv[1]);
 		exit(98);
 	}
+	bytesread = read(source_file, buffer, 1024);
+	if (bytesread == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		free(buffer);
+		exit(98);
+	}
 	dest_file = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (dest_file == -1)
 	{
@@ -66,17 +72,12 @@ int main(int argc, char *argv[])
 		close_file(dest_file);
 		exit(99);
 	}
-	while ((bytesread = read(source_file, buffer, 1024)) > 0)
+	byteswritten = write(dest_file, buffer, 1024);
+	if (byteswritten == -1)
 	{
-		byteswritten = write(dest_file, buffer, bytesread);
-		if (byteswritten == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s/n", argv[2]);
-			free(buffer);
-			close_file(source_file);
-			close_file(dest_file);
-			exit(99);
-		}
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		free(buffer);
+		exit(99);
 	}
 	free(buffer);
 	close_file(source_file);
